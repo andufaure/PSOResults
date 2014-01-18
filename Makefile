@@ -1,10 +1,11 @@
 .PHONY:	clean
 
+
 all:	PSONB/dist/PSONB.jar
 
 PSONB/dist/PSONB.jar:
-	cd PSONB && ant jar
+	antzz; if [ $$? -eq 0 ] ; then cd PSONB && antzz jar ; else cd PSONB && ant jar ; fi
 
 clean:
-	cd PSONB && ant clean
+	antzz; if [ $$? -eq 0 ] ; then cd PSONB && antzz clean ; else cd PSONB && ant clean ; fi
 	
