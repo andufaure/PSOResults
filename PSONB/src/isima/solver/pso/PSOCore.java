@@ -103,12 +103,6 @@ public final class PSOCore {
             decoders[i] = new PSOPositionDecoderWorker();
             toDecode[i] = new ArrayList<PSOParticle>();
             decoded[i] = new ArrayList<PSOParticle>();
-            
-            if (i != 0)
-            {
-                decoderThreads[i] = new Thread(decoders[i], "");
-                decoderThreads[i].start();
-            }
         }
         
         reset();
@@ -165,30 +159,35 @@ public final class PSOCore {
         // 2. decode particles
         
         {
+            
             // prepare
-            for (int i = 0 ; i < PSOConstants.NTHREAD_DECODE ; i++)
-                decoders[i].prepare(((List<PSOParticle>)toDecode[i]));
-
             calced.clear();
             taken.clear();
-
-            // building distances while construction is done
-            // when calced list is built, every particle has been decoded
-            while (taken.size() != (PSOConstants.N_PARTICLES))
-            {   
-                for (int i = 0 ; i < PSOConstants.NTHREAD_DECODE ; i++)
-                {
-                    PSOPosition pos = null;
-
-                    while ((pos = decoders[i].nextDecoded()) != null)
-                        taken.add(particlesByPosition.get(pos));
-                }
-                
-                decoders[0].decodeSingle();
-                //System.out.println(taken.size());
+            
+            for (int i = 0 ; i < PSOConstants.NTHREAD_DECODE ; i++)
+                decoders[i].prepare(((List<PSOParticle>)toDecode[i]));
+            
+            for (int i = 0 ; i < PSOConstants.NTHREAD_DECODE ; i++)
+            {
+                decoderThreads[i] = new Thread(decoders[i], "");
+                decoderThreads[i].start();
             }
             
-            //System.out.println("FINISHED : " + calced.size());
+            
+            for (int i = 0 ; i < PSOConstants.NTHREAD_DECODE ; i++)
+            {
+                decoderThreads[i].join();
+                decoderThreads[i] = null;
+            }        
+            
+
+            for (int i = 0 ; i < PSOConstants.NTHREAD_DECODE ; i++)
+            {
+                PSOPosition pos = null;
+
+                while ((pos = decoders[i].nextDecoded()) != null)
+                    taken.add(particlesByPosition.get(pos));
+            }
         }
         
         

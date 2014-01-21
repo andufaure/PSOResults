@@ -28,13 +28,11 @@ public class PSOPositionDecoderWorker implements Runnable {
         if (inParticles == null)
             throw new Exception("inPositions given is null");
         
-        synchronized (this.toDecode)
-        {
-            toDecode.clear();
+        toDecode.clear();
+        for (PSOParticle p : inParticles)
+            toDecode.add(p.getX());
         
-            for (PSOParticle p : inParticles)
-                toDecode.add(p.getX());
-        }
+        finished = false;
     }
     
     
@@ -43,28 +41,23 @@ public class PSOPositionDecoderWorker implements Runnable {
         
         try
         {
-            while (!finished)
-            {
-                decoded.clear();
-
-                while (this.toDecode.size() != 0)
-                    decodeSingle();
-                
-                synchronized(this.toDecode)
-                {
-                    this.toDecode.clear();
-                }
-                
-                Thread.sleep(35);
-            }
+            decoded.clear();
             
-            //toDecode.clear();
+            while (this.toDecode.size() != 0)
+                decodeSingle();
+
+            this.toDecode.clear();
         }
         catch(Exception e)
         {
             System.err.println("sub thread exception : " + e.toString());
             e.printStackTrace(System.err);
         }
+    }
+    
+    public synchronized boolean isFinished()
+    {
+        return finished;
     }
     
     public synchronized void stop()
@@ -80,16 +73,8 @@ public class PSOPositionDecoderWorker implements Runnable {
         PSOPosition pos = this.toDecode.getFirst();
        
         pos.decode();
-        
-        synchronized(this.toDecode)
-        {
-            toDecode.removeFirst();
-        }
-        
-        synchronized (this.decoded)
-        {
-            decoded.add(pos);
-        }
+        toDecode.removeFirst();
+        decoded.add(pos);
     }
     
     public synchronized PSOPosition nextDecoded()
