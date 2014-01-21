@@ -77,7 +77,7 @@ public final class PSOCore {
     public PSOCore(Matrix initMatrix, Matrix refMatrix) throws Exception
     {
         criterion = new CellDiffCriterion(refMatrix);
-        refDecoder = new PSOCPPDecoder(criterion);
+        refDecoder = new PSOCPP2Decoder(criterion);
         
         mutator = new PSONullMutator();
         //mutator = new PSOCPPVNDMutator(initMatrix, refMatrix);
