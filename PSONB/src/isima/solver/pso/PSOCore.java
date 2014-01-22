@@ -81,7 +81,7 @@ public final class PSOCore {
         
         mutator = new PSONullMutator();
         //mutator = new PSOCPPVNDMutator(initMatrix, refMatrix);
-        neighborhood = new PSOEDistNeighborhood();
+        neighborhood = new PSOFixedNeighborhood();
         
         System.out.println(refDecoder.toDescString());
         
@@ -332,26 +332,28 @@ public final class PSOCore {
                 if (k == PSOConstants.N_DIMS)
                 {
                     System.out.println("COLLISION TRIGGERED");
-
-                    velo_i[k] = -PSOConstants.VELO_MAX;
-                    velo_j[k] = PSOConstants.VELO_MAX;
-
-
-                    pos_i[k] = ppos_i[k] + velo_i[k];
-                    pos_j[k] = ppos_j[k] + velo_j[k];
-
-                    if (pos_i[k] >= PSOConstants.POS_MAX)
-                        pos_i[k] = PSOConstants.POS_MAX;
-
-                    if (pos_i[k] <= PSOConstants.POS_MIN)
-                        pos_i[k] = PSOConstants.POS_MIN;
+                    for (int l = 0 ; l < PSOConstants.N_DIMS ; l++)
+                    {
+                        velo_i[l] = -PSOConstants.VELO_MAX;
+                        velo_j[l] = PSOConstants.VELO_MAX;
 
 
-                    if (pos_j[k] >= PSOConstants.POS_MAX)
-                        pos_j[k] = PSOConstants.POS_MAX;
+                        pos_i[l] = ppos_i[l] + velo_i[l];
+                        pos_j[l] = ppos_j[l] + velo_j[l];
 
-                    if (pos_j[k] <= PSOConstants.POS_MIN)
-                        pos_j[k] = PSOConstants.POS_MIN;
+                        if (pos_i[l] >= PSOConstants.POS_MAX)
+                            pos_i[l] = PSOConstants.POS_MAX;
+
+                        if (pos_i[l] <= PSOConstants.POS_MIN)
+                            pos_i[l] = PSOConstants.POS_MIN;
+
+
+                        if (pos_j[l] >= PSOConstants.POS_MAX)
+                            pos_j[l] = PSOConstants.POS_MAX;
+
+                        if (pos_j[l] <= PSOConstants.POS_MIN)
+                            pos_j[l] = PSOConstants.POS_MIN;
+                    }
                 }
                 
             }
