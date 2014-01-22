@@ -2,7 +2,7 @@
 
 JAR_PATH="../../PSONB/dist/PSONB.jar"
 INIT="../../instances/fazia/init.csv"
-REF="../../instances/fazia/asm1.csv"
+REF="../../instances/fazia/asm4.csv"
 
 [ ! -e $JAR_PATH ] && echo "$JAR_PATH does not exist" 1>&2 && exit 1
 [ ! -e $INIT ] && echo "$REF does not exist" 1>&2 && exit 1
