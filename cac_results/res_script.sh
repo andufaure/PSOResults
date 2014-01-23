@@ -20,7 +20,7 @@ function	avrgsum()
 }
 
 avrgsu=`find $res_dir|grep out| avrgsum`
-avrgsu=$(($avrgsu/$nb_res))
+avrgsu=`echo "$avrgsu/$nb_res"|bc -l`
 
 echo "Results"
 echo "Errors:$nb_errors"

@@ -1,0 +1,3 @@
+
+REPL 88 to recalc for res proper calculation : 
+	=> COLLISION TRIGGERED AFTER FINAL RESULT FOUND

@@ -76,10 +76,10 @@ public final class PSOCore {
     
     public PSOCore(Matrix initMatrix, Matrix refMatrix) throws Exception
     {
-        criterion = new CDLE2Criterion(refMatrix);
+        criterion = new CellDiffCriterion(refMatrix);
         refDecoder = new PSOCPP2Decoder(criterion);
         
-        mutator = new PSONullMutator();
+        mutator = new PSOStdMutator();
         //mutator = new PSOCPPVNDMutator(initMatrix, refMatrix);
         neighborhood = new PSOFixedNeighborhood();
         
@@ -249,7 +249,7 @@ public final class PSOCore {
         
         if (mutator.enabled(health, iteration))
         {
-            System.out.println("MUTATION TRIGGERED");
+            //System.out.println("MUTATION TRIGGERED");
             mutator.mutat(health, particles);
             if (mutator.doUpdatePos())
                 this.updateXPositions();
@@ -331,7 +331,7 @@ public final class PSOCore {
                 
                 if (k == PSOConstants.N_DIMS)
                 {
-                    System.out.println("COLLISION TRIGGERED");
+                    //System.out.println("COLLISION TRIGGERED");
                     for (int l = 0 ; l < PSOConstants.N_DIMS ; l++)
                     {
                         velo_i[l] = -PSOConstants.VELO_MAX;
