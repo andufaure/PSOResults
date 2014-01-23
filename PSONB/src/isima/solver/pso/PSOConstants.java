@@ -9,6 +9,7 @@ import isima.solver.pso.decoders.PSOBlockOpDecoder;
 import isima.solver.pso.decoders.PSOBlockOpSearchDecoder;
 import isima.solver.pso.decoders.PSOCPP2Decoder;
 import isima.solver.pso.decoders.PSOCPPDecoder;
+import isima.solver.pso.decoders.PSOCPPNotVNDDecoder;
 import isima.solver.pso.decoders.PSONibbleDecoder;
 import isima.solver.pso.decoders.PSONibbleRolDecoder;
 
