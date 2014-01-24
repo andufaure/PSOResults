@@ -41,7 +41,7 @@ public class Main {
             System.out.println("PSO TRACE");
             System.out.println("INIT:" + args[0]);
             System.out.println("REF:" + args[1]);
-            System.out.println("DecodingPolicy:CPPNot");
+            System.out.println("DecodingPolicy:CPPNot:CDLE2");
             System.out.println("MutationPolicy:Std10");
             System.out.println("ParticleNeighborhood:Fixed");
             
