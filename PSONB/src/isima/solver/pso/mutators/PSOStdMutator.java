@@ -49,6 +49,6 @@ public class PSOStdMutator implements PSOMutator {
         else
             unhealthy_it = 0;
         
-        return ((unhealthy_it > 10 * mutat_time));
+        return ((unhealthy_it > 20 * mutat_time));
     }
 }

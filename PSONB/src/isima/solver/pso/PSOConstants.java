@@ -19,7 +19,7 @@ import isima.solver.pso.decoders.PSONibbleRolDecoder;
  */
 public class PSOConstants {
     
-    public static final int N_DIMS = PSOCPPDecoder.N_DIMS;
+    public static final int N_DIMS = PSONibbleDecoder.N_DIMS;
     
     /* non utilisé */
     public static final int INDEX_RULE_REF = 0;             // rule reference
@@ -52,6 +52,6 @@ public class PSOConstants {
     public static final double  INERTIA_MAX = 0.9;
     public static final double  INERTIA_MIN = 0.6;
     
-    public static final int     MAX_ITERATION = 25000 / N_PARTICLES;
+    public static final int     MAX_ITERATION = 50000 / N_PARTICLES;
     public static final double  INERTIA_DECR = (INERTIA_MAX - INERTIA_MIN) / MAX_ITERATION;
 }

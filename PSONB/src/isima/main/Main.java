@@ -41,9 +41,9 @@ public class Main {
             System.out.println("PSO TRACE");
             System.out.println("INIT:" + args[0]);
             System.out.println("REF:" + args[1]);
-            System.out.println("DecodingPolicy:CPPNot");
-            System.out.println("MutationPolicy:Std10");
-            System.out.println("ParticleNeighborhood:Fixed");
+            System.out.println("DecodingPolicy:Nibble");
+            System.out.println("MutationPolicy:Null");
+            System.out.println("ParticleNeighborhood:EDist");
             
             System.out.println("ParticleDims:" + PSOConstants.N_DIMS);
             System.out.println("ParticleCount:" + PSOConstants.N_PARTICLES);

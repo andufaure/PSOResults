@@ -77,11 +77,11 @@ public final class PSOCore {
     public PSOCore(Matrix initMatrix, Matrix refMatrix) throws Exception
     {
         criterion = new CellDiffCriterion(refMatrix);
-        refDecoder = new PSOCPPNotDecoder(criterion);
+        refDecoder = new PSONibbleDecoder(criterion);
         
-        mutator = new PSOStdMutator();
+        mutator = new PSONullMutator();
         //mutator = new PSOCPPVNDMutator(initMatrix, refMatrix);
-        neighborhood = new PSOFixedNeighborhood();
+        neighborhood = new PSOEDistNeighborhood();
         
         System.out.println(refDecoder.toDescString());
         
