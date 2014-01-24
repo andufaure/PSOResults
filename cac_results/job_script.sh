@@ -2,11 +2,11 @@
 
 JAR_PATH="../../PSONB/dist/PSONB.jar"
 INIT="../../instances/fazia/init.csv"
-REF="../../instances/fazia/asvn3.csv"
+REF="../../instances/fazia/asvn4.csv"
 
 [ ! -e $JAR_PATH ] && echo "$JAR_PATH does not exist" 1>&2 && exit 1
-[ ! -e $INIT ] && echo "$REF does not exist" 1>&2 && exit 1
-[ ! -e $REF ] && echo "$INIT does not exist" 1>&2 && exit 1
+[ ! -e $INIT ] && echo "$INIT does not exist" 1>&2 && exit 1
+[ ! -e $REF ] && echo "$REF does not exist" 1>&2 && exit 1
 
 [ "$2" == "" ] && echo "./job_script.sh START_REPLIC NB_REQUIRED_REPLICS" 1>&2 && exit 1
 
