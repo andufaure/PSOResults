@@ -79,7 +79,7 @@ public final class PSOCore {
         criterion = new CellDiffCriterion(refMatrix);
         refDecoder = new PSONibbleDecoder(criterion);
         
-        mutator = new PSONullMutator();
+        mutator = new PSOStdMutator();
         //mutator = new PSOCPPVNDMutator(initMatrix, refMatrix);
         neighborhood = new PSOEDistNeighborhood();
         
