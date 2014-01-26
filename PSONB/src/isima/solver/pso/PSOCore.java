@@ -76,12 +76,12 @@ public final class PSOCore {
     
     public PSOCore(Matrix initMatrix, Matrix refMatrix) throws Exception
     {
-        criterion = new CDLE2Criterion(refMatrix);
+        criterion = new CellDiffCriterion(refMatrix);
         refDecoder = new PSONibbleDecoder(criterion);
         
         mutator = new PSOStdMutator();
         //mutator = new PSOCPPVNDMutator(initMatrix, refMatrix);
-        neighborhood = new PSOEDistNeighborhood();
+        neighborhood = new PSOFixedNeighborhood();
         
         System.out.println(refDecoder.toDescString());
         
