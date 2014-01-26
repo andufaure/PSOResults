@@ -1,14 +1,16 @@
 #!/bin/bash
 
+[ "$3" == "" ] && echo "./job_script.sh START_REPLIC NB_REQUIRED_REPLICS REF_MATRIX" 1>&2 && exit 1
+
 JAR_PATH="../../PSONB/dist/PSONB.jar"
 INIT="../../instances/fazia/init.csv"
-REF="../../instances/fazia/asm1.csv"
+REF="../../instances/fazia/$3.csv"
 
 [ ! -e $JAR_PATH ] && echo "$JAR_PATH does not exist" 1>&2 && exit 1
 [ ! -e $INIT ] && echo "$INIT does not exist" 1>&2 && exit 1
 [ ! -e $REF ] && echo "$REF does not exist" 1>&2 && exit 1
 
-[ "$2" == "" ] && echo "./job_script.sh START_REPLIC NB_REQUIRED_REPLICS" 1>&2 && exit 1
+
 
 i=$1
 ref_base=`basename $REF|sed s/\.csv//g`
