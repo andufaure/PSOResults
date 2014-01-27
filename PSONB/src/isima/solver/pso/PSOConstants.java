@@ -19,7 +19,7 @@ import isima.solver.pso.decoders.PSONibbleRolDecoder;
  */
 public class PSOConstants {
     
-    public static final int N_DIMS = PSONibbleDecoder.N_DIMS;
+    public static final int N_DIMS = PSOCPPDecoder.N_DIMS;
     
     /* non utilisé */
     public static final int INDEX_RULE_REF = 0;             // rule reference

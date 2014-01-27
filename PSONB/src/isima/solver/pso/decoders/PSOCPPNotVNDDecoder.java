@@ -46,7 +46,9 @@ public class PSOCPPNotVNDDecoder implements PSOPositionDecoder {
 
     @Override
     public PSOPositionDecoder buildCopy() throws Exception {
-        return new PSOCPPNotVNDDecoder(vnd.getInitMatrix(), this.criterion);
+        PSOCPPNotVNDDecoder nvndd = new PSOCPPNotVNDDecoder(vnd.getInitMatrix(), this.criterion);
+        nvndd.decode_cnt = this.decode_cnt;
+        return nvndd;
     }
 
     @Override
@@ -122,7 +124,7 @@ public class PSOCPPNotVNDDecoder implements PSOPositionDecoder {
         
         
         // evaluation
-        if ((decode_cnt % 6) == 0)
+        if ((decode_cnt % 20) == 0)
         {           
             System.out.print("vnd... ");
             vnd.execute(automata.getInitMatrix(), criterion.getRefMatrix(), automata.getRules(), step);
