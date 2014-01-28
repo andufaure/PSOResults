@@ -42,7 +42,7 @@ public class Main {
             System.out.println("INIT:" + args[0]);
             System.out.println("REF:" + args[1]);
             System.out.println("DecodingPolicy:CPP2:CDLE2");
-            System.out.println("MutationPolicy:Repr");
+            System.out.println("MutationPolicy:Repr2");
             System.out.println("ParticleNeighborhood:Fixed");
             
             System.out.println("ParticleDims:" + PSOConstants.N_DIMS);

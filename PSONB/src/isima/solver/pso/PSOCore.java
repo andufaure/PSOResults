@@ -24,6 +24,7 @@ import isima.solver.pso.mutators.PSOCPPMutator;
 import isima.solver.pso.mutators.PSOCPPVNDMutator;
 import isima.solver.pso.mutators.PSOMutator;
 import isima.solver.pso.mutators.PSONullMutator;
+import isima.solver.pso.mutators.PSORepr2Mutator;
 import isima.solver.pso.mutators.PSOReprMutator;
 import isima.solver.pso.mutators.PSOStdMutator;
 import isima.solver.pso.neighborhood.PSOCircularNeighborhood;
@@ -80,7 +81,7 @@ public final class PSOCore {
         criterion = new CDLE2Criterion(refMatrix);
         refDecoder = new PSOCPP2Decoder(criterion);
         
-        mutator = new PSOReprMutator();
+        mutator = new PSORepr2Mutator();
         //mutator = new PSOCPPVNDMutator(initMatrix, refMatrix);
         neighborhood = new PSOFixedNeighborhood();
         
